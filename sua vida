@@ -1,0 +1,44 @@
+Both bugs fixed and verified via curl:
+- ✅ POST /api/goals now returns the JSON correctly
+- ✅ Logout via Bearer token now invalidates the session (returns 401 on /me after)
+
+Now let me write the PRD file and finish:
+Action: file_editor create /app/memory/PRD.md --file-text "# Organize+ — Product Requirements Document
+
+## Original Problem Statement (raw, PT-BR)
+> eu quero um app para vc se organizar botando metas de vida dicas para melhorar sua financia e ate mesmo para pouca renda te dando livros e e boks
+
+## User Choices (explicit)
+- Visual style: Modern & minimalist
+- Language: PT-BR
+- Defaults applied: Emergent Google Auth, Claude Sonnet 4.5 via Emergent LLM Key, curated static books, no PDF upload.
+
+## Architecture
+- Backend: FastAPI + MongoDB (motor). Auth via Emergent OAuth (Google). AI: Claude Sonnet 4.5 via `emergentintegrations.LlmChat` (streaming).
+- Frontend: React 19 + React Router 7 + Tailwind (Outfit/Manrope fonts) + Shadcn UI + sonner toasts.
+- Design system: Light theme, Organic & Earthy (Deep Forest Green #2C5545, Terracotta #C86A53, Bone-white #FAF9F6).
+
+## Personas
+- Pessoa de baixa renda no Brasil buscando se organizar e começar a poupar.
+- Jovem adulto querendo aprender finanças com livros curados.
+- Usuário geral que quer um coach com IA em português.
+
+## Implemented (2026-02)
+- Landing page (PT-BR) com hero, features e CTAs de Google login.
+- Auth flow: `/api/auth/session`, `/api/auth/me`, `/api/auth/logout` (cookie + Bearer).
+- Dashboard com greeting, stats, metas recentes, dica do dia e livro recomendado.
+- Metas: CRUD completo (criar/listar/atualizar progresso/concluir/deletar).
+- Dicas: 8 dicas curadas em PT-BR (renda-baixa, dívidas, investimentos, etc.) com filtros por categoria.
+- Biblioteca: 8 livros curados com capa, descrição, link externo, filtros.
+- Assistente Coach com IA (Claude Sonnet 4.5 streaming, histórico persistido).
+- Mobile-friendly bottom navigation.
+- Testing: backend curl + frontend playwright via testing_agent_v3 (iteração 1 — 2 bugs corrigidos).
+
+## Backlog
+- P1: Allow custom book/tip submissions by user.
+- P1: Notificações de progresso de metas (diário/semanal).
+- P2: Upload de PDFs de e-books próprios (object storage).
+- P2: Compartilhar conquistas em redes sociais (shareable goal cards).
+- P2: Modo escuro.
+"
+Observation: Create successful: /app/memory/PRD.md
